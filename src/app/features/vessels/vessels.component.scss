@@ -1,0 +1,11 @@
+.grid-wrap {
+  width: 100%;
+  margin-top: 1rem;
+  color-scheme: dark;
+}
+
+.grid-wrap ag-grid-angular {
+  display: block;
+  width: 100%;
+  height: min(70vh, 640px);
+}

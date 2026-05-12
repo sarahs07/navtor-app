@@ -1,1 +1,12 @@
-<main class="feature-page"><h1>Vessels</h1></main>
+<main class="feature-page">
+  <h1>Vessels</h1>
+  <div class="grid-wrap">
+    <ag-grid-angular
+      [theme]="theme"
+      [modules]="gridModules"
+      [rowData]="(vessels$ | async) ?? []"
+      [columnDefs]="columnDefs"
+      [defaultColDef]="defaultColDef"
+    />
+  </div>
+</main>
