@@ -31,6 +31,7 @@ describe('VesselsComponent', () => {
     await TestBed.configureTestingModule({
       imports: [VesselsComponent],
       providers: [{ provide: FetchData, useValue: fetchDataMock }],
+      animationsEnabled: false,
     }).compileComponents();
 
     fixture = TestBed.createComponent(VesselsComponent);

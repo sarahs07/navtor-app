@@ -1,5 +1,4 @@
 import { TestBed } from '@angular/core/testing';
-import { provideNoopAnimations } from '@angular/platform-browser/animations';
 import { provideRouter } from '@angular/router';
 import { App } from './app';
 import { appRoutes } from './app.routes';
@@ -8,7 +7,8 @@ describe('App', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [App],
-      providers: [provideRouter(appRoutes), provideNoopAnimations()],
+      providers: [provideRouter(appRoutes)],
+      animationsEnabled: false,
     }).compileComponents();
   });
 

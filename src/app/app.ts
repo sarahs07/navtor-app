@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { AppNavComponent } from './core/nav/app-nav.component';
+import { AppNavComponent } from './nav/app-nav.component';
 
 @Component({
   imports: [AppNavComponent, RouterOutlet],
@@ -8,6 +8,4 @@ import { AppNavComponent } from './core/nav/app-nav.component';
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
-export class App {
-  protected title = 'navtor-app';
-}
+export class App {}
