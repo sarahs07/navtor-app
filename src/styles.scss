@@ -1,1 +1,41 @@
-/* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
+
+// Dark blue theme (Material dark + navy surfaces).
+html {
+  color-scheme: dark;
+  @include mat.theme(
+    (
+      color: (
+        theme-type: dark,
+        primary: mat.$blue-palette,
+        tertiary: mat.$cyan-palette,
+      ),
+      typography: Roboto,
+      density: 0,
+    )
+  );
+}
+
+body {
+  margin: 0;
+  min-height: 100%;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+
+  // Navy app shell (slightly lighter surface than background for depth).
+  --mat-sys-background: #0a1628;
+  --mat-sys-surface: #0f1f35;
+
+  background-color: var(--mat-sys-background);
+  color: var(--mat-sys-on-surface);
+}
+
+// Global feature layout — must live here (or a partial imported only from this file), not in
+.feature-page {
+  padding: 1.5rem;
+
+  h1 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+}

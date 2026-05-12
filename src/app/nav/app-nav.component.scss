@@ -1,0 +1,24 @@
+.toolbar-spacer {
+  flex: 1 1 auto;
+}
+
+.brand {
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.top-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.top-nav a {
+  text-decoration: none;
+  font-size: 1.125rem;
+  line-height: 1.25;
+}
+
+.top-nav a.active {
+  background-color: color-mix(in srgb, var(--mat-sys-on-primary) 18%, transparent);
+}

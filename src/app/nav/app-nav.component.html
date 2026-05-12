@@ -1,0 +1,20 @@
+<mat-toolbar color="primary">
+  <nav class="top-nav" aria-label="Main">
+    <a
+      matButton="text"
+      routerLink="/vessels"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
+      Vessels
+    </a>
+    <a
+      matButton="text"
+      routerLink="/emissions"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
+      Emissions
+    </a>
+  </nav>
+</mat-toolbar>
