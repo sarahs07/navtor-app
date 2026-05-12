@@ -38,6 +38,11 @@ body {
     font-size: 1.5rem;
     font-weight: 500;
   }
+
+  .feature-lead {
+    margin: 0.75rem 0 0;
+    opacity: 0.85;
+  }
 }
 
 @import 'ag-grid-community/styles/ag-grid.css';

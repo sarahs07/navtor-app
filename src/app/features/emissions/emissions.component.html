@@ -1,1 +1,17 @@
-<main class="feature-page"><h1>Emissions</h1></main>
+<main class="feature-page">
+  <h1>Emissions</h1>
+
+  @if (loading$ | async) {
+    <p class="feature-lead">Loading…</p>
+  }
+
+  @if (error$ | async; as err) {
+    <p class="feature-lead" role="alert">{{ err }}</p>
+  }
+
+  @if (emissions$ | async; as records) {
+    <p class="feature-lead">
+      {{ records.length }} vessel emission record(s) loaded (via NgRx facade).
+    </p>
+  }
+</main>
