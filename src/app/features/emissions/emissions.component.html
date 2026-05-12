@@ -1,5 +1,9 @@
 <main class="feature-page">
   <h1>Emissions</h1>
+  <p class="feature-lead">
+    Line chart uses <strong>CO₂</strong> and <strong>NOx</strong> from each interval. Choose a
+    vessel to update the series.
+  </p>
 
   @if (loading$ | async) {
     <p class="feature-lead">Loading…</p>
@@ -9,17 +13,26 @@
     <p class="feature-lead" role="alert">{{ err }}</p>
   }
 
-  @if (emissions$ | async; as records) {
-    <mat-form-field appearance="outline" class="emission-type-field">
-      <mat-label>Emission type</mat-label>
-      <mat-select
-        [value]="selectedMetric()"
-        (selectionChange)="onMetricSelected($event.value)"
-      >
-        @for (opt of metricOptionsFor(records); track opt.key) {
-          <mat-option [value]="opt.key">{{ opt.label }}</mat-option>
-        }
-      </mat-select>
-    </mat-form-field>
+  @if (records(); as list) {
+    @if (list.length) {
+      <mat-form-field appearance="outline" class="vessel-field">
+        <mat-label>Vessel</mat-label>
+        <mat-select
+          [value]="selectedVesselId()"
+          (selectionChange)="onVesselSelected($event.value)"
+        >
+          @for (v of list; track v.id) {
+            <mat-option [value]="v.id">Vessel {{ v.id }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+      <div class="chart-wrap">
+        <highcharts-chart
+          [options]="chartOptions()"
+          style="width: 100%; height: 420px; display: block;"
+        />
+      </div>
+    }
   }
 </main>

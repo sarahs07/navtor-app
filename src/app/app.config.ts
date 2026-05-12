@@ -9,6 +9,7 @@ import { provideEffects } from '@ngrx/effects';
 import { provideStore } from '@ngrx/store';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { provideRouter } from '@angular/router';
+import { provideHighcharts } from 'highcharts-angular';
 import { appRoutes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
@@ -16,6 +17,7 @@ export const appConfig: ApplicationConfig = {
     provideBrowserGlobalErrorListeners(),
     provideHttpClient(),
     provideAnimationsAsync(),
+    provideHighcharts(),
     provideRouter(appRoutes),
     // No root feature keys — register slices with provideState on routes or lazy providers.
     provideStore({}),

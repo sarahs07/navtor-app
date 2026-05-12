@@ -4,7 +4,7 @@
     <ag-grid-angular
       [theme]="theme"
       [modules]="gridModules"
-      [rowData]="(vessels$ | async) ?? []"
+      [rowData]="vessels()"
       [columnDefs]="columnDefs"
       [defaultColDef]="defaultColDef"
     />

@@ -1,5 +1,5 @@
-import { AsyncPipe } from '@angular/common';
 import { Component, inject } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
 import { AgGridAngular } from 'ag-grid-angular';
 import {
   AllCommunityModule,
@@ -7,9 +7,7 @@ import {
   colorSchemeDark,
   Module,
   themeQuartz,
-  ValueFormatterParams,
 } from 'ag-grid-community';
-import { Observable } from 'rxjs';
 import { FetchData } from '../../services/fetch-data';
 import { Vessel } from '../../models/vessel.model';
 
@@ -18,7 +16,7 @@ import { Vessel } from '../../models/vessel.model';
   standalone: true,
   templateUrl: './vessels.component.html',
   styleUrl: './vessels.component.scss',
-  imports: [AgGridAngular, AsyncPipe],
+  imports: [AgGridAngular],
 })
 export class VesselsComponent {
   public theme = themeQuartz.withPart(colorSchemeDark);
@@ -27,8 +25,9 @@ export class VesselsComponent {
   /** Community modules for this grid only (keeps main bundle smaller). */
   protected readonly gridModules: Module[] = [AllCommunityModule];
 
-  protected readonly vessels$: Observable<Vessel[]> =
-    this.fetchData.getVessels();
+  protected readonly vessels = toSignal(this.fetchData.getVessels(), {
+    initialValue: [] as Vessel[],
+  });
 
   protected readonly columnDefs: ColDef<Vessel>[] = [
     { field: 'name', flex: 1, minWidth: 130 },
