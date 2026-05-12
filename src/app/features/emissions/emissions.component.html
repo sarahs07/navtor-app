@@ -10,8 +10,16 @@
   }
 
   @if (emissions$ | async; as records) {
-    <p class="feature-lead">
-      {{ records.length }} vessel emission record(s) loaded (via NgRx facade).
-    </p>
+    <mat-form-field appearance="outline" class="emission-type-field">
+      <mat-label>Emission type</mat-label>
+      <mat-select
+        [value]="selectedMetric()"
+        (selectionChange)="onMetricSelected($event.value)"
+      >
+        @for (opt of metricOptionsFor(records); track opt.key) {
+          <mat-option [value]="opt.key">{{ opt.label }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
   }
 </main>

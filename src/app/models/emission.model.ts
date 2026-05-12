@@ -23,3 +23,31 @@ export interface EmissionRecord {
 }
 
 export type EmissionsList = EmissionRecord[];
+
+/** Numeric emission fields on each time-series point (from the API). */
+export type EmissionMetricKey =
+  | 'co2_emissions'
+  | 'sox_emissions'
+  | 'nox_emissions'
+  | 'pm_emissions'
+  | 'ch4_emissions';
+
+export const EMISSION_METRIC_OPTIONS: ReadonlyArray<{
+  key: EmissionMetricKey;
+  label: string;
+}> = [
+  { key: 'co2_emissions', label: 'CO₂' },
+  { key: 'sox_emissions', label: 'SOx' },
+  { key: 'nox_emissions', label: 'NOx' },
+  { key: 'pm_emissions', label: 'Particulate matter (PM)' },
+  { key: 'ch4_emissions', label: 'CH₄' },
+];
+
+/** Options that exist on the loaded payload (handles API shape drift). */
+export function emissionMetricOptionsForRecords(
+  records: EmissionsList,
+): ReadonlyArray<{ key: EmissionMetricKey; label: string }> {
+  const sample = records[0]?.timeSeries[0];
+  if (!sample) return EMISSION_METRIC_OPTIONS;
+  return EMISSION_METRIC_OPTIONS.filter((o) => o.key in sample);
+}
