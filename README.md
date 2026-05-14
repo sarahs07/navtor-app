@@ -71,13 +71,6 @@ src/
       fetch-data.ts        # HTTP + shareReplay caching for exercise JSON URLs
 ```
 
-## Data sources
-
-Static exercise files (read-only):
-
-- Vessels: `https://frontendteamfiles.blob.core.windows.net/exercises/vessels.json`
-- Emissions: `https://frontendteamfiles.blob.core.windows.net/exercises/emissions.json`
-
 ## Global styling
 
 - **Material** dark theme and navy shell variables live in `src/styles.scss`.
