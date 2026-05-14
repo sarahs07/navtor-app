@@ -33,7 +33,7 @@ The dev server runs the `navtor-app` application (default Nx serve target). Open
 ### Vessels
 
 - Lazy route: `/vessels`
-- Loads fleet data from the exercise JSON endpoint (cached in `FetchData` via `shareReplay`).
+- Loads fleet data from JSON endpoint (cached in `FetchData` via `shareReplay`).
 - **AG Grid** with the v33+ **Theming API** (Quartz + dark color scheme). Do not mix legacy `ag-theme-*.css` imports with the `[theme]` binding.
 
 ![Vessels view](./docs/vessels.png)
@@ -75,5 +75,3 @@ src/
 
 - **Material** dark theme and navy shell variables live in `src/styles.scss`.
 - Feature layout helpers (e.g. `.feature-page`) are global so lazy feature templates pick them up consistently.
-
-MIT (see `package.json`).
